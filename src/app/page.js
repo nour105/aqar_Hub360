@@ -56,7 +56,7 @@ const developers = developersRes?.data || [];
                             </Link>
 
                             <Link
-                                href="/contact"
+                                href="/contact-us"
                                 className="border border-white text-white px-8 py-4 rounded-xl font-semibold"
                             >
                                 Contact Us
