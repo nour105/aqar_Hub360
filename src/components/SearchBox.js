@@ -3,85 +3,283 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function SearchBox({ cities, developers }) {
+export default function SearchBox({
+    cities = [],
+    developers = [],
+}) {
     const router = useRouter();
 
-    const [cityId, setCityId] = useState("");
-    const [developerId, setDeveloperId] = useState("");
-    const [propertyType, setPropertyType] = useState("");
-    const [budget, setBudget] = useState("");
+    const avenueAgency =
+        developers.find((a) =>
+            a.name
+                ?.toLowerCase()
+                .includes(
+                    "avenue properties"
+                )
+        );
+
+    const [propertyType, setPropertyType] =
+        useState("");
+
+    const [budget, setBudget] =
+        useState("");
+
+    const [cityId, setCityId] =
+        useState("");
+
+    const [bathrooms, setBathrooms] =
+        useState("");
+
+    // FIX HYDRATION
+    const [agencyId, setAgencyId] =
+        useState(
+            avenueAgency?.id?.toString() ||
+            ""
+        );
+
+    const quickTypes = [
+        "Apartment",
+        "Villa",
+        "Studio",
+        "Townhouse",
+        "Office",
+    ];
 
     const handleSearch = () => {
-        const params = new URLSearchParams();
+        const params =
+            new URLSearchParams();
 
-        if (cityId) params.set("city_id", cityId);
-        if (developerId) params.set("developer_id", developerId);
-        if (propertyType) params.set("property_type", propertyType);
-        if (budget) params.set("budget", budget);
+        if (propertyType)
+            params.set(
+                "property_type",
+                propertyType
+            );
 
-        router.push(`/search?${params.toString()}`);
+        if (budget)
+            params.set(
+                "budget",
+                budget
+            );
+
+        if (cityId)
+            params.set(
+                "city_id",
+                cityId
+            );
+
+        if (bathrooms)
+            params.set(
+                "bathrooms",
+                bathrooms
+            );
+
+        if (agencyId)
+            params.set(
+                "agency_id",
+                agencyId
+            );
+
+        router.push(
+            `/search?${params}`
+        );
     };
 
     return (
-        <section className="container mx-auto px-6 -mt-16 relative z-20">
-            <div className="bg-white rounded-3xl shadow-2xl p-8">
+        <section className="container mx-auto my-5">
 
-                <div className="grid md:grid-cols-5 gap-4">
+            <div className="bg-white rounded-3xl p-8 shadow-lg">
 
-                    <select
-                        value={cityId}
-                        onChange={(e) => setCityId(e.target.value)}
-                        className="border rounded-xl px-4 py-4"
-                    >
-                        <option value="">All Cities</option>
+                <div className="border-b pb-4">
+                    <button className="border-b-2 border-red-500 pb-2 font-bold uppercase">
+                        Rent
+                    </button>
+                </div>
 
-                        {cities.map((city) => (
-                            <option key={city.id} value={city.id}>
-                                {city.name}
-                            </option>
-                        ))}
-                    </select>
+                <div className="grid lg:grid-cols-5 gap-5 mt-8">
 
                     <select
-                        value={developerId}
-                        onChange={(e) => setDeveloperId(e.target.value)}
-                        className="border rounded-xl px-4 py-4"
+                        value={
+                            propertyType
+                        }
+                        onChange={(e)=>
+                            setPropertyType(
+                                e.target.value
+                            )
+                        }
+                        className="rounded-xl border p-4"
                     >
-                        <option value="">All Developers</option>
+                        <option value="">
+                            Property Type
+                        </option>
 
-                        {developers.map((dev) => (
-                            <option key={dev.id} value={dev.id}>
-                                {dev.name}
-                            </option>
-                        ))}
-                    </select>
+                        <option value="apartment">
+                            Apartment
+                        </option>
 
-                    <select
-                        value={propertyType}
-                        onChange={(e) => setPropertyType(e.target.value)}
-                        className="border rounded-xl px-4 py-4"
-                    >
-                        <option value="">Property Type</option>
-                        <option value="apartment">Apartment</option>
-                        <option value="villa">Villa</option>
-                        <option value="office">Office</option>
-                        <option value="commercial">Commercial</option>
+                        <option value="villa">
+                            Villa
+                        </option>
+
+                        <option value="studio">
+                            Studio
+                        </option>
+
                     </select>
 
                     <select
                         value={budget}
-                        onChange={(e) => setBudget(e.target.value)}
-                        className="border rounded-xl px-4 py-4"
+                        onChange={(e)=>
+                            setBudget(
+                                e.target.value
+                            )
+                        }
+                        className="rounded-xl border p-4"
                     >
-                        <option value="">Budget</option>
-                        <option value="50000">Below 50K AED</option>
-                        <option value="100000">Below 100K AED</option>
-                        <option value="200000">Below 200K AED</option>
+                        <option value="">
+                            Price
+                        </option>
+
+                        <option value="50000">
+                            Under 50K
+                        </option>
+
+                        <option value="100000">
+                            Under 100K
+                        </option>
+
                     </select>
 
+                    <select
+                        value={cityId}
+                        onChange={(e)=>
+                            setCityId(
+                                e.target.value
+                            )
+                        }
+                        className="rounded-xl border p-4"
+                    >
+                        <option value="">
+                            Location
+                        </option>
+
+                        {cities.map(
+                            (city) => (
+                                <option
+                                    key={
+                                        city.id
+                                    }
+                                    value={
+                                        city.id
+                                    }
+                                >
+                                    {
+                                        city.name
+                                    }
+                                </option>
+                            )
+                        )}
+
+                    </select>
+
+                    <select
+                        value={
+                            bathrooms
+                        }
+                        onChange={(e)=>
+                            setBathrooms(
+                                e.target.value
+                            )
+                        }
+                        className="rounded-xl border p-4"
+                    >
+                        <option value="">
+                            Bathrooms
+                        </option>
+
+                        <option value="1">
+                            1+
+                        </option>
+
+                        <option value="2">
+                            2+
+                        </option>
+
+                        <option value="3">
+                            3+
+                        </option>
+
+                    </select>
+
+                    <select
+                        value={
+                            agencyId
+                        }
+                        onChange={(e)=>
+                            setAgencyId(
+                                e.target.value
+                            )
+                        }
+                        className="rounded-xl border p-4"
+                    >
+                        <option value="">
+                            Agency
+                        </option>
+
+                        {developers.map(
+                            (
+                                agency
+                            ) => (
+                                <option
+                                    key={
+                                        agency.id
+                                    }
+                                    value={
+                                        agency.id
+                                    }
+                                >
+                                    {
+                                        agency.name
+                                    }
+                                </option>
+                            )
+                        )}
+
+                    </select>
+
+                </div>
+
+                <div className="flex flex-wrap gap-3 mt-8">
+
+                    {quickTypes.map(
+                        (item) => (
+                            <button
+                                key={
+                                    item
+                                }
+                                type="button"
+                                onClick={() =>
+                                    setPropertyType(
+                                        item.toLowerCase()
+                                    )
+                                }
+                                className={`px-4 py-2 rounded-full border ${
+                                    propertyType ===
+                                    item.toLowerCase()
+                                        ? "bg-black text-white"
+                                        : "bg-white"
+                                }`}
+                            >
+                                {item}
+                            </button>
+                        )
+                    )}
+
                     <button
-                        onClick={handleSearch}
-                        className="bg-black text-white rounded-xl font-semibold"
+                        type="button"
+                        onClick={
+                            handleSearch
+                        }
+                        className="ml-auto bg-black text-white px-8 rounded-full"
                     >
                         Search
                     </button>
@@ -89,6 +287,7 @@ export default function SearchBox({ cities, developers }) {
                 </div>
 
             </div>
+
         </section>
     );
 }
