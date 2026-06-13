@@ -182,21 +182,21 @@ transparent 45%
 
                                             </div>
 
-  <div className="flex justify-between items-center border-t border-gray-100 pt-5 mt-5 gap-3">
+                                            <div className="flex justify-between items-center border-t border-gray-100 pt-5 mt-5 gap-3">
 
-    <div className="w-[140px] h-[125px] flex items-center">
-        <img
-            src={property.agency?.logo}
-            alt={property.agency?.name || "Agency"}
-            className="max-w-full max-h-full object-contain"
-        />
-    </div>
+                                                <div className="w-[140px] h-[125px] flex items-center">
+                                                    <img
+                                                        src={property.agency?.logo}
+                                                        alt={property.agency?.name || "Agency"}
+                                                        className="max-w-full max-h-full object-contain"
+                                                    />
+                                                </div>
 
-    <span className="text-black font-semibold text-sm sm:text-base">
-        View Details →
-    </span>
+                                                <span className="text-black font-semibold text-sm sm:text-base">
+                                                    View Details →
+                                                </span>
 
-</div>
+                                            </div>
                                         </div>
 
                                     </Link>
@@ -304,9 +304,9 @@ transparent 45%
                             cities.slice(0, 5).map((city, index) => (
 
                                 <Link
-    key={city.id}
-    href={`/cities/${city.id}`}
-    className="
+                                    key={city.id}
+                                    href={`/cities/${city.id}`}
+                                    className="
         group
         relative
         h-[250px]
@@ -317,56 +317,56 @@ transparent 45%
         overflow-hidden
         block
     "
->
+                                >
 
-    {/* Background Image */}
- <img
-  src={`https://admin.aqarhub360.com/uploads/${city.image}`}
-  alt={city.name}
-  className="w-full h-full object-cover"
-/>
+                                    {/* Background Image */}
+                                    <img
+                                        src={`https://admin.aqarhub360.com/uploads/${city.image}`}
+                                        alt={city.name}
+                                        className="w-full h-full object-cover"
+                                    />
 
-    {/* Overlay */}
-    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
+                                    {/* Overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
 
-    {/* Content */}
-    <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-between">
+                                    {/* Content */}
+                                    <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-between">
 
-        <div>
-            <span className="text-white/70 text-lg md:text-2xl font-light">
-                {String(index + 1).padStart(2, "0")}
-            </span>
-        </div>
+                                        <div>
+                                            <span className="text-white/70 text-lg md:text-2xl font-light">
+                                                {String(index + 1).padStart(2, "0")}
+                                            </span>
+                                        </div>
 
-        <div>
+                                        <div>
 
-            <h3 className="text-white text-xl md:text-3xl font-black uppercase">
-                {city.name}
-            </h3>
+                                            <h3 className="text-white text-xl md:text-3xl font-black uppercase">
+                                                {city.name}
+                                            </h3>
 
-            <p className="hidden md:block text-gray-300 text-sm mt-4 leading-relaxed">
-                Tell us your budget, preferred neighbourhoods and must-haves.
-                Our smart matching engine surfaces the most relevant listings
-                within hours.
-            </p>
+                                            <p className="hidden md:block text-gray-300 text-sm mt-4 leading-relaxed">
+                                                Tell us your budget, preferred neighbourhoods and must-haves.
+                                                Our smart matching engine surfaces the most relevant listings
+                                                within hours.
+                                            </p>
 
-            <div className="flex items-center justify-between mt-4 md:mt-8">
+                                            <div className="flex items-center justify-between mt-4 md:mt-8">
 
-                <span className="text-white text-[10px] md:text-xs uppercase tracking-[2px]">
-                    Browse Properties
-                </span>
+                                                <span className="text-white text-[10px] md:text-xs uppercase tracking-[2px]">
+                                                    Browse Properties
+                                                </span>
 
-                <span className="text-white text-xl group-hover:translate-x-2 transition">
-                    →
-                </span>
+                                                <span className="text-white text-xl group-hover:translate-x-2 transition">
+                                                    →
+                                                </span>
 
-            </div>
+                                            </div>
 
-        </div>
+                                        </div>
 
-    </div>
+                                    </div>
 
-</Link>
+                                </Link>
 
                             ))
 
@@ -393,50 +393,50 @@ transparent 45%
             {/* WHY US */}
 
 
-{/* WHY CHOOSE */}
-<section className="bg-[#EFEFEF] py-20 rounded-[28px] overflow-hidden">
-    <div className="max-w-7xl mx-auto px-6">
+            {/* WHY CHOOSE */}
+            <section className="bg-[#EFEFEF] py-20 rounded-[28px] overflow-hidden">
+                <div className="max-w-7xl mx-auto px-6">
 
-        <div className="mb-14">
+                    <div className="mb-14">
 
-            <span className="uppercase text-[11px] tracking-[3px] text-red-500 font-semibold">
-                Discover Why We Stand Out
-            </span>
+                        <span className="uppercase text-[11px] tracking-[3px] text-red-500 font-semibold">
+                            Discover Why We Stand Out
+                        </span>
 
-            <h2 className="text-[58px] leading-none font-black uppercase text-black mt-3">
-                Why Choose Aqar Hub 360
-            </h2>
+                        <h2 className="text-[58px] leading-none font-black uppercase text-black mt-3">
+                            Why Choose Aqar Hub 360
+                        </h2>
 
-        </div>
+                    </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+                    <div className="grid md:grid-cols-3 gap-6">
 
-            {[
-                {
-                    icon: ShieldCheck,
-                    title: "Verified Listings",
-                    desc:
-                        "Every property is carefully reviewed to ensure accurate information and trusted listings.",
-                },
-                {
-                    icon: Handshake,
-                    title: "Trusted Agents",
-                    desc:
-                        "Work directly with professional real estate experts and agencies.",
-                },
-                {
-                    icon: CirclePlay,
-                    title: "Fast Search",
-                    desc:
-                        "Powerful filtering tools help you find the perfect rental property quickly.",
-                },
-            ].map((item, i) => {
-                const Icon = item.icon;
+                        {[
+                            {
+                                icon: ShieldCheck,
+                                title: "Verified Listings",
+                                desc:
+                                    "Every property is carefully reviewed to ensure accurate information and trusted listings.",
+                            },
+                            {
+                                icon: Handshake,
+                                title: "Trusted Agents",
+                                desc:
+                                    "Work directly with professional real estate experts and agencies.",
+                            },
+                            {
+                                icon: CirclePlay,
+                                title: "Fast Search",
+                                desc:
+                                    "Powerful filtering tools help you find the perfect rental property quickly.",
+                            },
+                        ].map((item, i) => {
+                            const Icon = item.icon;
 
-                return (
-                    <div
-                        key={i}
-                        className="
+                            return (
+                                <div
+                                    key={i}
+                                    className="
                             bg-[#F7F4F1]
                             border
                             border-[#DDDDDD]
@@ -448,9 +448,9 @@ transparent 45%
                             hover:-translate-y-1
                             transition
                         "
-                    >
-                        <div
-                            className="
+                                >
+                                    <div
+                                        className="
                                 w-[56px]
                                 h-[56px]
                                 rounded-full
@@ -461,37 +461,37 @@ transparent 45%
                                 justify-center
                                 shrink-0
                             "
-                        >
-                            <Icon size={24} />
-                        </div>
+                                    >
+                                        <Icon size={24} />
+                                    </div>
 
-                        <div>
-                            <h3 className="uppercase font-black text-lg">
-                                {item.title}
-                            </h3>
+                                    <div>
+                                        <h3 className="uppercase font-black text-lg">
+                                            {item.title}
+                                        </h3>
 
-                            <p className="text-gray-500 text-sm mt-2 leading-6">
-                                {item.desc}
-                            </p>
-                        </div>
+                                        <p className="text-gray-500 text-sm mt-2 leading-6">
+                                            {item.desc}
+                                        </p>
+                                    </div>
+                                </div>
+                            );
+                        })}
+
                     </div>
-                );
-            })}
-
-        </div>
-    </div>
-</section>
+                </div>
+            </section>
 
 
-{/* CTA */}
-<section className="relative py-24 overflow-hidden">
+            {/* CTA */}
+            <section className="relative py-24 overflow-hidden">
 
-    {/* dark bg */}
-    <div className="absolute inset-0 bg-[#0F0A0A]" />
+                {/* dark bg */}
+                <div className="absolute inset-0 bg-[#0F0A0A]" />
 
-    {/* red glow */}
-    <div
-        className="
+                {/* red glow */}
+                <div
+                    className="
             absolute
             bottom-[-120px]
             left-0
@@ -501,20 +501,20 @@ transparent 45%
             blur-[180px]
             opacity-40
         "
-    />
+                />
 
-    <div className="relative max-w-7xl mx-auto px-6">
+                <div className="relative max-w-7xl mx-auto px-6">
 
-        <div className="grid lg:grid-cols-[1.6fr_0.8fr] gap-10 items-center">
+                    <div className="grid lg:grid-cols-[1.6fr_0.8fr] gap-10 items-center">
 
-            <div>
+                        <div>
 
-                <span className="text-[11px] uppercase tracking-[3px] text-red-500 font-semibold">
-                    Discover Your New Home
-                </span>
+                            <span className="text-[11px] uppercase tracking-[3px] text-red-500 font-semibold">
+                                Discover Your New Home
+                            </span>
 
-                <h2
-                    className="
+                            <h2
+                                className="
                         mt-6
                         text-white
                         uppercase
@@ -522,40 +522,40 @@ transparent 45%
                         text-[90px]
                         leading-[0.9]
                     "
-                >
-                    Your Next Address
-                    <br />
-                    <span className="text-gray-500">
-                        Awaits You.
-                    </span>
-                </h2>
+                            >
+                                Your Next Address
+                                <br />
+                                <span className="text-gray-500">
+                                    Awaits You.
+                                </span>
+                            </h2>
 
-            </div>
+                        </div>
 
-            <div className="space-y-6 text-white">
+                        <div className="space-y-6 text-white">
 
-                <div className="flex items-center gap-3">
-                    <Phone size={16} />
-                    <span>+971 58 532 0443</span>
-                </div>
+                            <div className="flex items-center gap-3">
+                                <Phone size={16} />
+                                <span>+971 58 532 0443</span>
+                            </div>
 
-                <div className="flex items-center gap-3">
-                    <Mail size={16} />
-                    <span>hello@aqarhub360.com</span>
-                </div>
+                            <div className="flex items-center gap-3">
+                                <Mail size={16} />
+                                <span>hello@aqarhub360.com</span>
+                            </div>
 
-                <div className="flex items-start gap-3">
-                    <MapPin size={16} />
-                    <span>
-                        540 Park Ave,
-                        <br />
-                        New York
-                    </span>
-                </div>
+                            <div className="flex items-start gap-3">
+                                <MapPin size={16} />
+                                <span>
+                                    540 Park Ave,
+                                    <br />
+                                    New York
+                                </span>
+                            </div>
 
-                <Link
-                    href="/properties"
-                    className="
+                            <Link
+                                href="/properties"
+                                className="
                         inline-flex
                         items-center
                         gap-3
@@ -567,18 +567,18 @@ transparent 45%
                         font-semibold
                         mt-6
                     "
-                >
-                    Browse All Properties
-                    <ArrowRight size={18} />
-                </Link>
+                            >
+                                Browse All Properties
+                                <ArrowRight size={18} />
+                            </Link>
 
-            </div>
+                        </div>
 
-        </div>
+                    </div>
 
-    </div>
+                </div>
 
-</section>
+            </section>
 
         </main>
     );
