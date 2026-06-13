@@ -182,21 +182,25 @@ transparent 45%
 
                                             </div>
 
-                                            <div className="flex justify-between items-center border-t border-gray-100 pt-5 mt-5">
+                                          <div className="flex justify-between items-center border-t border-gray-100 pt-5 mt-5 gap-3">
 
-                                                <Image
-                                                    src={property.agency.logo}
-                                                    alt={property.agency?.name || "Agency"}
-                                                    width={100}
-                                                    height={40}
-                                                    className="object-contain"
-                                                />
+    <div className="relative w-[80px] sm:w-[100px] h-[35px] sm:h-[40px] flex-shrink-0">
 
-                                                <span className="text-black font-semibold">
-                                                    View Details →
-                                                </span>
+        <Image
+            src={property.agency?.logo}
+            alt={property.agency?.name}
+            fill
+            sizes="100px"
+            className="object-contain"
+        />
 
-                                            </div>
+    </div>
+
+    <span className="text-black font-semibold text-sm sm:text-base whitespace-nowrap">
+        View Details →
+    </span>
+
+</div>
 
                                         </div>
 
@@ -305,62 +309,73 @@ transparent 45%
                             cities.slice(0, 5).map((city, index) => (
 
                                 <Link
-                                    key={city.id}
-                                    href={`/cities/${city.id}`}
-                                    className="group relative h-[430px] rounded-[22px] overflow-hidden"
-                                >
+    key={city.id}
+    href={`/cities/${city.id}`}
+    className="
+        group
+        relative
+        h-[250px]
+        sm:h-[300px]
+        md:h-[380px]
+        lg:h-[430px]
+        rounded-[22px]
+        overflow-hidden
+        block
+    "
+>
 
-                                    {/* Background Image */}
-                                    <Image
-                                        src={`https://admin.aqarhub360.com/uploads/${city.image}`}
-                                        alt={city.name}
-                                        width={200}
-                                        height={200}
-                                        className="absolute inset-0 w-full h-full object-cover"
-                                    />
+    {/* Background Image */}
+    <Image
+        src={`https://admin.aqarhub360.com/uploads/${city.image}`}
+        alt={city.name}
+        fill
+        sizes="(max-width: 768px) 50vw,
+               (max-width: 1024px) 33vw,
+               20vw"
+        className="object-cover"
+    />
 
-                                    {/* Overlay */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
+    {/* Overlay */}
+    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
 
-                                    {/* Content */}
-                                    <div className="absolute inset-0 p-6 flex flex-col justify-between">
+    {/* Content */}
+    <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-between">
 
-                                        <div>
-                                            <span className="text-white/70 text-2xl font-light">
-                                                {String(index + 1).padStart(2, "0")}
-                                            </span>
-                                        </div>
+        <div>
+            <span className="text-white/70 text-lg md:text-2xl font-light">
+                {String(index + 1).padStart(2, "0")}
+            </span>
+        </div>
 
-                                        <div>
+        <div>
 
-                                            <h3 className="text-white text-3xl font-black uppercase">
-                                                {city.name}
-                                            </h3>
+            <h3 className="text-white text-xl md:text-3xl font-black uppercase">
+                {city.name}
+            </h3>
 
-                                            <p className="text-gray-300 text-sm mt-4 leading-relaxed">
-                                                Tell us your budget, preferred
-                                                neighbourhoods and must-haves. Our smart
-                                                matching engine surfaces the most relevant
-                                                listings within hours.
-                                            </p>
+            <p className="hidden md:block text-gray-300 text-sm mt-4 leading-relaxed">
+                Tell us your budget, preferred neighbourhoods and must-haves.
+                Our smart matching engine surfaces the most relevant listings
+                within hours.
+            </p>
 
-                                            <div className="flex items-center justify-between mt-8">
+            <div className="flex items-center justify-between mt-4 md:mt-8">
 
-                                                <span className="text-white text-xs uppercase tracking-[2px]">
-                                                    Browse Properties
-                                                </span>
+                <span className="text-white text-[10px] md:text-xs uppercase tracking-[2px]">
+                    Browse Properties
+                </span>
 
-                                                <span className="text-white text-xl group-hover:translate-x-2 transition">
-                                                    →
-                                                </span>
+                <span className="text-white text-xl group-hover:translate-x-2 transition">
+                    →
+                </span>
 
-                                            </div>
+            </div>
 
-                                        </div>
+        </div>
 
-                                    </div>
+    </div>
 
-                                </Link>
+</Link>
 
                             ))
 
