@@ -105,10 +105,10 @@ return (
 
           <div className="bg-white rounded-3xl p-8 shadow-sm">
             <div className="grid grid-cols-4 gap-6">
-              <Feature
+              {/* <Feature
                 title="Bedrooms"
                 value={property.bedrooms}
-              />
+              /> */}
 
               <Feature
                 title="Bathrooms"

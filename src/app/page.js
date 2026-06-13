@@ -19,7 +19,7 @@ export default async function HomePage() {
     const propertiesRes = await getProperties();
 
     const featuredProperties =
-        propertiesRes?.data?.data?.slice(0, 4) || [];
+        propertiesRes?.data?.slice(0, 4) || [];
     const developersRes = await getDevelopers();
     const developers = developersRes?.data || [];
     return (
@@ -124,7 +124,7 @@ transparent 45%
 
                                     <Link
                                         key={property.id}
-                                        href={`/properties/${property.id}`}
+                                        href={`/properties/${property.slug}`}
                                         className="group bg-white rounded-[32px] overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
                                     >
 
