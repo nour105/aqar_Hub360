@@ -8,8 +8,12 @@ export default function Navbar() {
             <div className="max-w-7xl  mx-auto px-4 py-4 flex items-center justify-between">
 
                 <Link href="/" className="text-2xl font-bold">
-                  <Image src={logoAqarHUb} alt="AqarHub360 Logo" width={120} height={50} />
-                </Link>
+<img
+  src={logoAqarHUb.src}
+  alt="AqarHub360 Logo"
+  width={120}
+  height={50}
+/>                </Link>
 
                 <nav className="flex text-center gap-6">
 

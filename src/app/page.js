@@ -182,26 +182,21 @@ transparent 45%
 
                                             </div>
 
-                                          <div className="flex justify-between items-center border-t border-gray-100 pt-5 mt-5 gap-3">
+  <div className="flex justify-between items-center border-t border-gray-100 pt-5 mt-5 gap-3">
 
-    <div className="relative w-[80px] sm:w-[100px] h-[35px] sm:h-[40px] flex-shrink-0">
-
-        <Image
+    <div className="w-[140px] h-[125px] flex items-center">
+        <img
             src={property.agency?.logo}
-            alt={property.agency?.name}
-            fill
-            sizes="100px"
-            className="object-contain"
+            alt={property.agency?.name || "Agency"}
+            className="max-w-full max-h-full object-contain"
         />
-
     </div>
 
-    <span className="text-black font-semibold text-sm sm:text-base whitespace-nowrap">
+    <span className="text-black font-semibold text-sm sm:text-base">
         View Details →
     </span>
 
 </div>
-
                                         </div>
 
                                     </Link>
@@ -325,15 +320,11 @@ transparent 45%
 >
 
     {/* Background Image */}
-    <Image
-        src={`https://admin.aqarhub360.com/uploads/${city.image}`}
-        alt={city.name}
-        fill
-        sizes="(max-width: 768px) 50vw,
-               (max-width: 1024px) 33vw,
-               20vw"
-        className="object-cover"
-    />
+ <img
+  src={`https://admin.aqarhub360.com/uploads/${city.image}`}
+  alt={city.name}
+  className="w-full h-full object-cover"
+/>
 
     {/* Overlay */}
     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/20" />
