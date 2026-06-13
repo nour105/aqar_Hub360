@@ -18,8 +18,10 @@ export default async function HomePage() {
     const cities = citiesRes?.data || [];
     const propertiesRes = await getProperties();
 
-    const featuredProperties =
-        propertiesRes?.data?.slice(0, 4) || [];
+  const featuredProperties =
+    [...(propertiesRes?.data || [])]
+        .sort((a, b) => (Number(a.bathrooms) || 0) - (Number(b.bathrooms) || 0))
+        .slice(0, 4);
     const developersRes = await getDevelopers();
     const developers = developersRes?.data || [];
     return (
