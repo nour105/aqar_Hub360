@@ -505,8 +505,7 @@ transparent 45%
 
                 <div className="relative max-w-7xl mx-auto px-6">
 
-                    <div className="grid lg:grid-cols-[1.6fr_0.8fr] gap-10 items-center">
-
+<div className="grid grid-cols-1 lg:grid-cols-[1.6fr_0.8fr] gap-10 items-center">
                         <div>
 
                             <span className="text-[11px] uppercase tracking-[3px] text-red-500 font-semibold">
@@ -514,14 +513,7 @@ transparent 45%
                             </span>
 
                             <h2
-                                className="
-                        mt-6
-                        text-white
-                        uppercase
-                        font-black
-                        text-[90px]
-                        leading-[0.9]
-                    "
+                    className="mt-6 text-white uppercase font-black text-[42px] sm:text-[60px] lg:text-[90px] leading-[0.9]"
                             >
                                 Your Next Address
                                 <br />
