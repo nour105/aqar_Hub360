@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import bgLocation from "../../../../public/aqarHub_ASSESTS/Mappreview.png";
+import LocationMap from "@/components/LocationMap";
 
 async function getProperty(slug) {
   try {
@@ -53,248 +55,420 @@ export default async function PropertyPage({ params }) {
     notFound();
   }
 
-return (
-  <div className="bg-[#f8f9fb] min-h-screen">
-    {/* HERO */}
+  const gallery =
+    property.gallery_images?.length > 0
+      ? property.gallery_images
+      : [{ url: property.cover_image }];
 
-    <section className="relative h-[650px]">
-      <img
-        src="https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?q=80&w=2000"
-        alt={property.title}
-        className="absolute inset-0 w-full h-full object-cover"
-      />
+  return (
+    <main className="bg-[#f5f5f5] min-h-screen">
 
-      <div className="absolute inset-0 bg-black/50" />
+      {/* TOP GALLERY */}
+      <section className="max-w-[1280px] mx-auto px-5 pt-5">
 
-      <div className="absolute bottom-0 left-0 right-0">
-        <div className="max-w-7xl mx-auto px-4 pb-10 text-white">
-          <div className="flex flex-wrap gap-3 mb-4">
-            <span className="bg-white text-black px-4 py-2 rounded-full text-sm font-medium">
-              {property.purpose}
-            </span>
+        <div className="grid lg:grid-cols-[2fr_1fr] gap-2">
 
-            <span className="bg-blue-600 px-4 py-2 rounded-full text-sm font-medium">
-              {property.property_type}
-            </span>
+          <img
+            src={property.cover_image}
+            className="
+            h-[420px]
+            w-full
+            object-cover
+            rounded-xl
+            "
+          />
+
+          <div className="grid grid-rows-2 gap-2">
+
+            {gallery.slice(0, 2).map((img, i) => (
+              <img
+                key={i}
+                src={img.url}
+                className="
+                h-[205px]
+                rounded-xl
+                object-cover
+                w-full
+                "
+              />
+            ))}
+
           </div>
 
-          <h1 className="text-5xl font-bold mb-3">
-            {property.title}
-          </h1>
-
-          <p className="text-lg opacity-90">
-            {property.location}, {property.city?.name},{" "}
-            {property.country?.name}
-          </p>
-
-          <div className="mt-6 text-4xl font-bold">
-            {property.price}
-          </div>
         </div>
-      </div>
-    </section>
 
-    {/* CONTENT */}
+      </section>
 
-    <section className="max-w-7xl mx-auto px-4 py-10">
-      <div className="grid lg:grid-cols-3 gap-8">
-        {/* LEFT */}
+      <section className="max-w-[1280px] mx-auto px-5 py-6">
 
-        <div className="lg:col-span-2 space-y-8">
-          {/* FEATURES */}
+        <div className="grid lg:grid-cols-[1fr_320px] gap-5">
 
-          <div className="bg-white rounded-3xl p-8 shadow-sm">
-            <div className="grid grid-cols-4 gap-6">
-              {/* <Feature
-                title="Bedrooms"
-                value={property.bedrooms}
-              /> */}
+          {/* LEFT */}
+          <div className="bg-[#f5f5f5]">
 
-              <Feature
-                title="Bathrooms"
-                value={property.bathrooms}
-              />
+            {/* PRICE */}
 
-              <Feature
-                title="Area"
-                value={`${property.area_sqft} sqft`}
-              />
+            <div className="pb-8 border-b border-[#e3e3e3]">
 
-              <Feature
-                title="Type"
-                value={property.property_type}
-              />
+              <h1 className="text-[34px] font-bold text-[#2a2a2a]">
+                {property.price}
+              </h1>
+
+              <div className="flex gap-5 mt-4 text-[13px] text-[#6d6d6d]">
+
+                <span>
+                  🛏 {property.bedrooms || "-"} Beds
+                </span>
+
+                <span>
+                  🛁 {property.bathrooms || "-"} Baths
+                </span>
+
+                <span>
+                  📐 {property.area_sqft} sqft
+                </span>
+
+              </div>
+
+              {/* BUTTONS */}
+
+              <div className="flex flex-wrap gap-3 mt-5">
+
+                {[
+                  "Upfront Costs",
+                  "View on map",
+                  "Floor plan",
+                ].map((btn) => (
+
+                  <button
+                    key={btn}
+                    className="
+          h-[36px]
+          px-5
+          text-[13px]
+          rounded-md
+          bg-[#fff4f4]
+          text-[#ff2a2a]
+          hover:bg-red-500
+          hover:text-white
+          transition
+          "
+                  >
+                    {btn}
+                  </button>
+
+                ))}
+
+              </div>
+
             </div>
-          </div>
 
-          {/* DESCRIPTION */}
 
-          <div className="bg-white rounded-3xl p-8 shadow-sm">
-            <h2 className="text-2xl font-bold mb-5">
-              Description
-            </h2>
 
-            <p className="text-gray-600 leading-8">
-              {property.description ||
-                "Luxury property located in one of the most desirable locations in Dubai. Designed for modern living with premium finishes and excellent amenities."}
-            </p>
-          </div>
+            {/* DESCRIPTION */}
 
-          {/* DETAILS */}
+            <section className="py-8 border-b border-[#e3e3e3]">
 
-          <div className="bg-white rounded-3xl p-8 shadow-sm">
-            <h2 className="text-2xl font-bold mb-6">
-              Property Details
-            </h2>
+              <div className="text-[#b8b8b8] text-[11px] mb-2">
+                Apartment | For Rent
+              </div>
 
-            <div className="grid md:grid-cols-2 gap-5">
-              <Detail
-                label="Reference Number"
-                value={property.reference_no}
-              />
-
-              <Detail
-                label="Purpose"
-                value={property.purpose}
-              />
-
-              <Detail
-                label="Property Type"
-                value={property.property_type}
-              />
-
-              <Detail
-                label="Unit Type"
-                value={property.unit_type}
-              />
-
-              <Detail
-                label="City"
-                value={property.city?.name}
-              />
-
-              <Detail
-                label="Country"
-                value={property.country?.name}
-              />
-            </div>
-          </div>
-
-          {/* AMENITIES */}
-
-          {property.amenities?.length > 0 && (
-            <div className="bg-white rounded-3xl p-8 shadow-sm">
-              <h2 className="text-2xl font-bold mb-6">
-                Amenities
+              <h2
+                className="
+      text-[38px]
+      uppercase
+      font-black
+      leading-[1.1]
+      text-[#222]
+      mb-5
+      "
+              >
+                {property.title}
               </h2>
 
-              <div className="grid md:grid-cols-3 gap-4">
-                {property.amenities.map((item) => (
+              <div className="text-[13px] text-[#ff3131] mb-5">
+
+                Available From:
+                <span className="font-bold ml-2">
+                  6-12-2026
+                </span>
+
+              </div>
+
+              <p
+                className="
+      text-[#666]
+      text-[14px]
+      leading-[28px]
+      "
+              >
+                {property.description}
+              </p>
+
+
+              {/* FEATURES */}
+
+              {/* <div className="mt-8">
+
+      <div
+        className="
+        font-semibold
+        text-[14px]
+        mb-4
+        "
+      >
+        Property Features :
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-y-4">
+
+        <Feature text="Bright and spacious layout" />
+        <Feature text="Kitchen fully furnished with appliances" />
+
+        <Feature text="Modern interior" />
+        <Feature text="Balcony with community views" />
+
+        <Feature text="Built-in wardrobes" />
+        <Feature text="Covered parking" />
+
+      </div>
+
+    </div> */}
+
+
+              <button
+                className="
+      mt-8
+      px-8
+      h-[42px]
+      rounded-full
+      bg-[#ff0000]
+      text-white
+      text-[13px]
+      font-medium
+      "
+              >
+                See Location →
+              </button>
+
+            </section>
+
+
+
+            {/* AMENITIES */}
+
+            <section className="py-8 ">
+
+              <h3
+                className="
+      text-[34px]
+      font-black
+      uppercase
+      mb-8
+      "
+              >
+                Amenities
+              </h3>
+
+              <div
+                className="
+      grid
+      md:grid-cols-3
+      gap-y-5
+      text-[14px]
+      "
+              >
+
+                {property.amenities?.map((a) => (
+
                   <div
-                    key={item.id}
-                    className="border rounded-xl p-4 font-medium"
+                    key={a.id}
+                    className="
+          flex
+          items-center
+          gap-3
+          "
                   >
-                    ✓ {item.name}
+
+                    <span className="text-[#555]">
+                      ⌂
+                    </span>
+
+                    <span>
+                      {a.name}
+                    </span>
+
                   </div>
+
                 ))}
+
               </div>
-            </div>
-          )}
-        </div>
 
-        {/* SIDEBAR */}
+            </section>
 
-        <div className="space-y-6">
-          {/* CONTACT */}
 
-          <div className="bg-white rounded-3xl p-8 shadow-sm sticky top-24">
-            <h3 className="text-2xl font-bold mb-6">
-              Contact Agent
-            </h3>
 
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 rounded-full bg-gray-200" />
+            {/* LOCATION */}
+          <h3
+                className="
+      text-[34px]
+      font-black
+      uppercase
+      mb-8
+      "
+              >
+                Location
+              </h3>
 
-              <div>
-                <div className="font-bold text-lg">
-                  {property.agent?.name}
+  <div
+  className="relative h-[150px] bg-cover rounded-md bg-center"
+  style={{
+    backgroundImage: `url(${bgLocation.src})`,
+  }}
+>
+
+  <LocationMap location={property.location} />
+</div>
+
+          </div>
+
+          {/* RIGHT */}
+
+          <aside className="sticky top-6 h-fit space-y-5">
+
+            {/* AGENT */}
+
+            <div className="bg-white rounded-xl p-5">
+
+              <div className="flex items-center gap-4">
+
+                {/* <img
+                  src={
+                    property.agent?.photo ||
+                    `https://ui-avatars.com/api/?name=${property.agent?.name}`
+                  }
+                  className="
+                  w-16
+                  h-16
+                  rounded-full
+                  object-cover
+                  "
+                /> */}
+
+                <div>
+
+                  <div className="font-bold">
+                    {/* {property.agent?.name} */}
+                  </div>
+
+                  <div className="text-sm text-gray-500">
+                    Property Consultant
+                  </div>
+
                 </div>
 
-                <div className="text-gray-500">
-                  Property Consultant
-                </div>
               </div>
+
+              <button
+                className="
+                mt-5
+                w-full
+                bg-red-500
+                text-white
+                rounded-full
+                py-3
+                "
+              >
+                Contact Agent
+              </button>
+
             </div>
 
-            <div className="space-y-3 mb-6">
-              <p>{property.agent?.phone}</p>
-              <p>{property.agent?.email}</p>
+            {/* AGENCY */}
+
+            <div className="bg-white rounded-xl p-5 text-center">
+
+              <img
+                src={property.agency?.logo}
+                className="
+                h-14
+                mx-auto
+                object-contain
+                "
+              />
+
+              <div className="mt-4 font-semibold">
+                {property.agency?.name}
+              </div>
+
             </div>
 
-            <button className="w-full bg-blue-600 text-white py-4 rounded-xl font-semibold">
-              Call Agent
-            </button>
-          </div>
+            {/* PROPERTY CARD */}
 
-          {/* DEVELOPER */}
+            <div className="bg-white rounded-xl overflow-hidden">
 
-          <div className="bg-white rounded-3xl p-8 shadow-sm">
-            <h3 className="text-xl font-bold mb-4">
-              Developer
-            </h3>
+              <img
+                src={property.cover_image}
+                className="
+                h-[180px]
+                w-full
+                object-cover
+                "
+              />
 
-            <div className="font-semibold text-lg">
-              {property.developer?.name}
+              <div className="p-4">
+
+                <div className="font-bold text-[22px]">
+                  {property.price}
+                </div>
+
+                <div className="mt-2 line-clamp-2">
+
+                  {property.title}
+
+                </div>
+
+                <button
+                  className="
+                  mt-5
+                  w-full
+                  border
+                  border-red-500
+                  text-red-500
+                  rounded-full
+                  py-3
+                  "
+                >
+                  View Details
+                </button>
+
+              </div>
+
             </div>
 
-            <p className="text-gray-600 mt-3">
-              {property.developer?.description}
-            </p>
-          </div>
+          </aside>
 
-          {/* LOCATION */}
-
-          <div className="bg-white rounded-3xl p-8 shadow-sm">
-            <h3 className="text-xl font-bold mb-4">
-              Location
-            </h3>
-
-            <p>{property.location}</p>
-            <p>{property.city?.name}</p>
-            <p>{property.country?.name}</p>
-          </div>
         </div>
-      </div>
-    </section>
-  </div>
-);
-}
 
+      </section>
 
-function Feature({ title, value }) {
-  return (
-    <div className="text-center">
-      <div className="text-2xl font-bold">
-        {value}
-      </div>
-
-      <div className="text-gray-500 text-sm mt-1">
-        {title}
-      </div>
-    </div>
+    </main>
   );
 }
 
-function Detail({ label, value }) {
+function Feature({ text }) {
   return (
-    <div className="border rounded-xl p-4">
-      <div className="text-sm text-gray-500">
-        {label}
-      </div>
-
-      <div className="font-semibold mt-1">
-        {value || "-"}
-      </div>
+    <div
+      className="
+      flex
+      items-start
+      gap-3
+      text-[14px]
+      text-[#555]
+      "
+    >
+      <span>•</span>
+      <span>{text}</span>
     </div>
   );
 }
