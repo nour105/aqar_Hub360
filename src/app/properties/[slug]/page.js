@@ -4,6 +4,13 @@ import bgLocation from "../../../../public/aqarHub_ASSESTS/Mappreview.png";
 import LocationMap from "@/components/LocationMap";
 import MapButton from "@/components/MapButton";
 import PropertyButtons from "@/components/PropertyButtons";
+import {
+    Phone,
+    Mail,
+    MapPin,
+    ArrowRight
+} from "lucide-react"; 
+import Link from "next/link";
 async function getProperty(slug) {
   try {
     const res = await fetch(
@@ -510,9 +517,95 @@ export default async function PropertyPage({ params }) {
           </aside>
 
         </div>
-
+  
       </section>
+ <section className="relative py-24 overflow-hidden">
 
+                {/* dark bg */}
+                <div className="absolute inset-0 bg-[#0F0A0A]" />
+
+                {/* red glow */}
+                <div
+                    className="
+            absolute
+            bottom-[-120px]
+            left-0
+            w-[600px]
+            h-[300px]
+            bg-[#FF1A1A]
+            blur-[180px]
+            opacity-40
+        "
+                />
+
+                <div className="relative max-w-7xl mx-auto px-6">
+
+<div className="grid grid-cols-1 lg:grid-cols-[1.6fr_0.8fr] gap-10 items-center">
+                        <div>
+
+                            <span className="text-[11px] uppercase tracking-[3px] text-red-500 font-semibold">
+                                Discover Your New Home
+                            </span>
+
+                            <h2
+                    className="mt-6 text-white uppercase font-black text-[42px] sm:text-[60px] lg:text-[90px] leading-[0.9]"
+                            >
+                                Your Next Address
+                                <br />
+                                <span className="text-gray-500">
+                                    Awaits You.
+                                </span>
+                            </h2>
+
+                        </div>
+
+                        <div className="space-y-6 text-white">
+
+                            <div className="flex items-center gap-3">
+                                <Phone size={16} />
+                                <span>+971 58 532 0443</span>
+                            </div>
+
+                            <div className="flex items-center gap-3">
+                                <Mail size={16} />
+                                <span>hello@aqarhub360.com</span>
+                            </div>
+
+                            <div className="flex items-start gap-3">
+                                <MapPin size={16} />
+                                <span>
+                                    540 Park Ave,
+                                    <br />
+                                    New York
+                                </span>
+                            </div>
+
+                            <Link
+                                href="/properties"
+                                className="
+                        inline-flex
+                        items-center
+                        gap-3
+                        bg-[#FF2323]
+                        hover:bg-red-600
+                        px-8
+                        py-4
+                        rounded-full
+                        font-semibold
+                        mt-6
+                    "
+                            >
+                                Browse All Properties
+                                <ArrowRight size={18} />
+                            </Link>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
     </main>
   );
 }
