@@ -2,7 +2,8 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import bgLocation from "../../../../public/aqarHub_ASSESTS/Mappreview.png";
 import LocationMap from "@/components/LocationMap";
-
+import MapButton from "@/components/MapButton";
+import PropertyButtons from "@/components/PropertyButtons";
 async function getProperty(slug) {
   try {
     const res = await fetch(
@@ -39,7 +40,9 @@ export async function generateMetadata({ params }) {
       title: "Property Not Found",
     };
   }
-
+const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+  property.location || ""
+)}`;
   return {
     title: property.title,
     description: property.description || property.title,
@@ -116,10 +119,7 @@ export default async function PropertyPage({ params }) {
 
               <div className="flex gap-5 mt-4 text-[13px] text-[#6d6d6d]">
 
-                <span>
-                  🛏 {property.bedrooms || "-"} Beds
-                </span>
-
+              
                 <span>
                   🛁 {property.bathrooms || "-"} Baths
                 </span>
@@ -132,34 +132,10 @@ export default async function PropertyPage({ params }) {
 
               {/* BUTTONS */}
 
-              <div className="flex flex-wrap gap-3 mt-5">
-
-                {[
-                  "Upfront Costs",
-                  "View on map",
-                  "Floor plan",
-                ].map((btn) => (
-
-                  <button
-                    key={btn}
-                    className="
-          h-[36px]
-          px-5
-          text-[13px]
-          rounded-md
-          bg-[#fff4f4]
-          text-[#ff2a2a]
-          hover:bg-red-500
-          hover:text-white
-          transition
-          "
-                  >
-                    {btn}
-                  </button>
-
-                ))}
-
-              </div>
+            <PropertyButtons
+  location={property.location}
+  bgImage={bgLocation.src}
+/>
 
             </div>
 
@@ -236,20 +212,7 @@ export default async function PropertyPage({ params }) {
     </div> */}
 
 
-              <button
-                className="
-      mt-8
-      px-8
-      h-[42px]
-      rounded-full
-      bg-[#ff0000]
-      text-white
-      text-[13px]
-      font-medium
-      "
-              >
-                See Location →
-              </button>
+<MapButton location={property.location} />
 
             </section>
 
@@ -337,114 +300,211 @@ export default async function PropertyPage({ params }) {
           <aside className="sticky top-6 h-fit space-y-5">
 
             {/* AGENT */}
+{/* AGENT */}
 
-            <div className="bg-white rounded-xl p-5">
+<div
+  className="
+  relative
+  bg-[#f6f4f4]
+  border
+  border-[#dddddd]
+  rounded-[14px]
+  px-5
+  pb-7
+  pt-12
+  text-center
+  "
+>
 
-              <div className="flex items-center gap-4">
+  {/* IMAGE */}
 
-                {/* <img
-                  src={
-                    property.agent?.photo ||
-                    `https://ui-avatars.com/api/?name=${property.agent?.name}`
-                  }
-                  className="
-                  w-16
-                  h-16
-                  rounded-full
-                  object-cover
-                  "
-                /> */}
+  <div
+    className="
+    absolute
+    -top-8
+    left-1/2
+    -translate-x-1/2
+    "
+  >
 
-                <div>
+    <div className="relative">
 
-                  <div className="font-bold">
-                    {/* {property.agent?.name} */}
-                  </div>
+  <img
+  src="/aqarHub_ASSESTS/aqarFav.png"
+  alt="AqarHub Logo"
+  className="w-full h-full object-cover"
+/>
 
-                  <div className="text-sm text-gray-500">
-                    Property Consultant
-                  </div>
+      <div
+        className="
+        absolute
+        bottom-0
+        right-0
+        w-[22px]
+        h-[22px]
+        rounded-full
+        bg-[#ff4141]
+        text-white
+        text-[11px]
+        flex
+        items-center
+        justify-center
+        border-2
+        border-white
+        "
+      >
+        ★
+      </div>
 
-                </div>
+    </div>
 
-              </div>
+  </div>
 
-              <button
-                className="
-                mt-5
-                w-full
-                bg-red-500
-                text-white
-                rounded-full
-                py-3
-                "
-              >
-                Contact Agent
-              </button>
+  {/* NAME */}
 
-            </div>
+<h3
+  className="
+  text-[16px]
+  uppercase
+  font-medium
+  text-[#333]
+  tracking-[0.5px]
+  "
+>
+  PROPERTY CONSULTANT
+</h3>
+  {/* BUTTONS */}
+  <div className="grid grid-cols-2 gap-2 mt-5">
 
-            {/* AGENCY */}
+    <a
+     href="tel:+971585320443"
+      className="
+      h-[42px]
+      rounded-full
+      border
+      border-[#ff8080]
+      bg-white
+      text-[#ff2c2c]
+      text-[13px]
+      flex
+      items-center
+      justify-center
+      gap-2
+      font-medium
+      "
+    >
+      📞 Call
+    </a>
 
-            <div className="bg-white rounded-xl p-5 text-center">
+    <a
+     href="https://wa.me/971585320443"
+      target="_blank"
+      className="
+      h-[42px]
+      rounded-full
+      bg-[#ff0000]
+      text-white
+      text-[13px]
+      flex
+      items-center
+      justify-center
+      gap-2
+      font-medium
+      "
+    >
+      💬 Whatsapp
+    </a>
 
-              <img
-                src={property.agency?.logo}
-                className="
-                h-14
-                mx-auto
-                object-contain
-                "
-              />
+  </div>
 
-              <div className="mt-4 font-semibold">
-                {property.agency?.name}
-              </div>
 
-            </div>
+  {/* DETAILS */}
 
-            {/* PROPERTY CARD */}
+  <div className="mt-5">
 
-            <div className="bg-white rounded-xl overflow-hidden">
+    <div
+      className="
+      text-[12px]
+      text-[#555]
+      "
+    >
+      ⭐ <span className="font-bold">5.0</span>
+      <span className="ml-1">
+        12 Ratings
+      </span>
+    </div>
 
-              <img
-                src={property.cover_image}
-                className="
-                h-[180px]
-                w-full
-                object-cover
-                "
-              />
+    <div
+      className="
+      mt-2
+      text-[12px]
+      text-[#666]
+      "
+    >
+      Usually Responds
+      <span className="font-bold text-black">
+        {" "}
+        Within 5 Minutes
+      </span>
+    </div>
 
-              <div className="p-4">
+    <div
+      className="
+      mt-3
+      text-[12px]
+      text-[#777]
+      "
+    >
+      🗨 English, Arabic
+    </div>
+<div
+    className="rounded-[14px]  flex items-center justify-center px-8 "
+  >
+    <img
+      src={property.agency?.logo}
+      alt=""
+      className="max-h-[150px] object-contain"
+    />
 
-                <div className="font-bold text-[22px]">
-                  {property.price}
-                </div>
+  </div>
+  </div>
+</div>
 
-                <div className="mt-2 line-clamp-2">
 
-                  {property.title}
+           {/* Sponsored Card */}
+                    <div className="lg:col-span-1">
+                        <div className="sticky top-24 bg-white rounded-[32px] overflow-hidden shadow-xl border border-gray-100">
 
-                </div>
+                            <div className="bg-red-50 px-4 py-3 border-b">
+                                <span className="text-red-600 font-bold text-sm uppercase">
+                                    Sponsored
+                                </span>
+                            </div>
 
-                <button
-                  className="
-                  mt-5
-                  w-full
-                  border
-                  border-red-500
-                  text-red-500
-                  rounded-full
-                  py-3
-                  "
-                >
-                  View Details
-                </button>
+                            <div className="relative h-[320px]">
+                                <img
+                                    src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+                                    alt=""
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
 
-              </div>
+                            <div className="p-6">
+                                <h2 className="text-4xl font-bold">
+                                    AED 4,200,000
+                                </h2>
 
-            </div>
+                                <h3 className="text-xl font-semibold mt-3">
+                                    Full Floor Residence Penthouse
+                                </h3>
+
+                                <p className="text-gray-500 mt-2">
+                                    📍 Downtown Dubai
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
 
           </aside>
 
