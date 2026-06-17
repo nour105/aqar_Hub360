@@ -40,9 +40,9 @@ export async function generateMetadata({ params }) {
       title: "Property Not Found",
     };
   }
-const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-  property.location || ""
-)}`;
+  const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    property.location || ""
+  )}`;
   return {
     title: property.title,
     description: property.description || property.title,
@@ -119,7 +119,7 @@ export default async function PropertyPage({ params }) {
 
               <div className="flex gap-5 mt-4 text-[13px] text-[#6d6d6d]">
 
-              
+
                 <span>
                   🛁 {property.bathrooms || "-"} Baths
                 </span>
@@ -132,10 +132,10 @@ export default async function PropertyPage({ params }) {
 
               {/* BUTTONS */}
 
-            <PropertyButtons
-  location={property.location}
-  bgImage={bgLocation.src}
-/>
+              <PropertyButtons
+                location={property.location}
+                bgImage={bgLocation.src}
+              />
 
             </div>
 
@@ -212,7 +212,7 @@ export default async function PropertyPage({ params }) {
     </div> */}
 
 
-<MapButton location={property.location} />
+              <MapButton location={property.location} />
 
             </section>
 
@@ -272,26 +272,26 @@ export default async function PropertyPage({ params }) {
 
 
             {/* LOCATION */}
-          <h3
-                className="
+            <h3
+              className="
       text-[34px]
       font-black
       uppercase
       mb-8
       "
-              >
-                Location
-              </h3>
+            >
+              Location
+            </h3>
 
-  <div
-  className="relative h-[150px] bg-cover rounded-md bg-center"
-  style={{
-    backgroundImage: `url(${bgLocation.src})`,
-  }}
->
+            <div
+              className="relative h-[150px] bg-cover rounded-md bg-center"
+              style={{
+                backgroundImage: `url(${bgLocation.src})`,
+              }}
+            >
 
-  <LocationMap location={property.location} />
-</div>
+              <LocationMap location={property.location} />
+            </div>
 
           </div>
 
@@ -300,10 +300,10 @@ export default async function PropertyPage({ params }) {
           <aside className="sticky top-6 h-fit space-y-5">
 
             {/* AGENT */}
-{/* AGENT */}
-
-<div
-  className="
+            {/* AGENT */}
+            <div className="bg-white border border-[#dddddd] rounded-[14px] px-5 pb-7 pt-12 text-center">
+              <div
+                className="
   relative
   bg-[#f6f4f4]
   border
@@ -314,29 +314,29 @@ export default async function PropertyPage({ params }) {
   pt-12
   text-center
   "
->
+              >
 
-  {/* IMAGE */}
+                {/* IMAGE */}
 
-  <div
-    className="
+                <div
+                  className="
     absolute
     -top-8
     left-1/2
     -translate-x-1/2
     "
-  >
+                >
 
-    <div className="relative">
+                  <div className="relative">
 
-  <img
-  src="/aqarHub_ASSESTS/aqarFav.png"
-  alt="AqarHub Logo"
-  className="w-full h-full object-cover"
-/>
+                    <img
+                      src="/aqarHub_ASSESTS/aqarFav.png"
+                      alt="AqarHub Logo"
+                      className="w-full h-full object-cover"
+                    />
 
-      <div
-        className="
+                    <div
+                      className="
         absolute
         bottom-0
         right-0
@@ -352,33 +352,33 @@ export default async function PropertyPage({ params }) {
         border-2
         border-white
         "
-      >
-        ★
-      </div>
+                    >
+                      ★
+                    </div>
 
-    </div>
+                  </div>
 
-  </div>
+                </div>
 
-  {/* NAME */}
+                {/* NAME */}
 
-<h3
-  className="
+                <h3
+                  className="
   text-[16px]
   uppercase
   font-medium
   text-[#333]
   tracking-[0.5px]
   "
->
-  PROPERTY CONSULTANT
-</h3>
-  {/* BUTTONS */}
-  <div className="grid grid-cols-2 gap-2 mt-5">
+                >
+                  PROPERTY CONSULTANT
+                </h3>
+                {/* BUTTONS */}
+                <div className="grid grid-cols-2 gap-2 mt-5">
 
-    <a
-     href="tel:+971585320443"
-      className="
+                  <a
+                    href="tel:+971585320443"
+                    className="
       h-[42px]
       rounded-full
       border
@@ -392,14 +392,14 @@ export default async function PropertyPage({ params }) {
       gap-2
       font-medium
       "
-    >
-      📞 Call
-    </a>
+                  >
+                    📞 Call
+                  </a>
 
-    <a
-     href="https://wa.me/971585320443"
-      target="_blank"
-      className="
+                  <a
+                    href="https://wa.me/971585320443"
+                    target="_blank"
+                    className="
       h-[42px]
       rounded-full
       bg-[#ff0000]
@@ -411,101 +411,102 @@ export default async function PropertyPage({ params }) {
       gap-2
       font-medium
       "
-    >
-      💬 Whatsapp
-    </a>
+                  >
+                    💬 Whatsapp
+                  </a>
 
-  </div>
+                </div>
 
 
-  {/* DETAILS */}
+                {/* DETAILS */}
 
-  <div className="mt-5">
+                <div className="mt-5">
 
-    <div
-      className="
+                  <div
+                    className="
       text-[12px]
       text-[#555]
       "
-    >
-      ⭐ <span className="font-bold">5.0</span>
-      <span className="ml-1">
-        12 Ratings
-      </span>
-    </div>
+                  >
+                    ⭐ <span className="font-bold">5.0</span>
+                    <span className="ml-1">
+                      12 Ratings
+                    </span>
+                  </div>
 
-    <div
-      className="
+                  <div
+                    className="
       mt-2
       text-[12px]
       text-[#666]
       "
-    >
-      Usually Responds
-      <span className="font-bold text-black">
-        {" "}
-        Within 5 Minutes
-      </span>
-    </div>
+                  >
+                    Usually Responds
+                    <span className="font-bold text-black">
+                      {" "}
+                      Within 5 Minutes
+                    </span>
+                  </div>
 
-    <div
-      className="
+                  <div
+                    className="
       mt-3
       text-[12px]
       text-[#777]
       "
-    >
-      🗨 English, Arabic
-    </div>
-<div
-    className="rounded-[14px]  flex items-center justify-center px-8 "
-  >
-    <img
-      src={property.agency?.logo}
-      alt=""
-      className="max-h-[150px] object-contain"
-    />
+                  >
+                    🗨 English, Arabic
+                  </div>
+                  <div
+                    className="rounded-[14px]  flex items-center justify-center px-8 "
+                  >
+                    <img
+                      src={property.agency?.logo}
+                      alt=""
+                      className="max-h-[150px] object-contain"
+                    />
 
-  </div>
-  </div>
-</div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
+            {/* Sponsored Card */}
+            <div className="bg-white border border-[#dddddd] rounded-[14px] px-5 pb-7 pt-12 text-center">
+              <div className="lg:col-span-1">
+                <div className="sticky top-24 bg-white rounded-[32px] overflow-hidden shadow-xl border border-gray-100">
 
-           {/* Sponsored Card */}
-                    <div className="lg:col-span-1">
-                        <div className="sticky top-24 bg-white rounded-[32px] overflow-hidden shadow-xl border border-gray-100">
+                  <div className="bg-red-50 px-4 py-3 border-b">
+                    <span className="text-red-600 font-bold text-sm uppercase">
+                      Sponsored
+                    </span>
+                  </div>
 
-                            <div className="bg-red-50 px-4 py-3 border-b">
-                                <span className="text-red-600 font-bold text-sm uppercase">
-                                    Sponsored
-                                </span>
-                            </div>
+                  <div className="relative h-[320px]">
+                    <img
+                      src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+                      alt=""
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
 
-                            <div className="relative h-[320px]">
-                                <img
-                                    src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
-                                    alt=""
-                                    className="w-full h-full object-cover"
-                                />
-                            </div>
+                  <div className="p-6">
+                    <h2 className="text-4xl font-bold">
+                      AED 4,200,000
+                    </h2>
 
-                            <div className="p-6">
-                                <h2 className="text-4xl font-bold">
-                                    AED 4,200,000
-                                </h2>
+                    <h3 className="text-xl font-semibold mt-3">
+                      Full Floor Residence Penthouse
+                    </h3>
 
-                                <h3 className="text-xl font-semibold mt-3">
-                                    Full Floor Residence Penthouse
-                                </h3>
+                    <p className="text-gray-500 mt-2">
+                      📍 Downtown Dubai
+                    </p>
+                  </div>
 
-                                <p className="text-gray-500 mt-2">
-                                    📍 Downtown Dubai
-                                </p>
-                            </div>
-
-                        </div>
-                    </div>
-
+                </div>
+              </div>
+            </div>
           </aside>
 
         </div>

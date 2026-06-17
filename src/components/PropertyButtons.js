@@ -20,7 +20,7 @@ export default function PropertyButtons({ location, bgImage }) {
                 setShowMap(!showMap);
               }
             }}
-            className="h-[36px] px-5 text-[13px] rounded-md bg-[#fff4f4] text-[#ff2a2a] hover:bg-red-500 hover:text-white transition" >
+            className="h-[36px] px-5 text-[13px] cursor-pointer rounded-md bg-[#fff4f4] text-[#ff2a2a] hover:bg-red-500 hover:text-white transition" >
             {btn}
           </button>
         ))}
@@ -30,7 +30,7 @@ export default function PropertyButtons({ location, bgImage }) {
       {/* MAP */}
       {showMap && (
         <div
-          className="relative h-[150px] bg-cover rounded-md bg-center mt-5"
+          className="relative h-[150px] cursor-pointer bg-cover rounded-md bg-center mt-5"
           style={{
             backgroundImage: `url(${bgImage})`,
           }}
